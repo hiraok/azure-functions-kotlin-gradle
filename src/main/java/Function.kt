@@ -6,12 +6,12 @@ import java.util.*
 
 class Function {
 
-    @FunctionName("HttpTrigger-Java")
+    @FunctionName("HttpTrigger")
     fun run(
         @HttpTrigger(
             name = "req",
             methods = [HttpMethod.GET, HttpMethod.POST],
-            authLevel = AuthorizationLevel.FUNCTION
+            authLevel = AuthorizationLevel.ANONYMOUS
         ) request: HttpRequestMessage<Optional<String>>,
         context: ExecutionContext
     ): HttpResponseMessage {

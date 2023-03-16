@@ -1,7 +1,6 @@
 plugins {
     kotlin("jvm") version "1.7.21"
-    id("com.microsoft.azure.azurefunctions") version "1.8.0"
-    application
+    id("com.microsoft.azure.azurefunctions") version "1.9.0"
 }
 
 
@@ -24,18 +23,17 @@ tasks.test {
 
 kotlin {
     jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
-application {
-    mainClass.set("FunctionKt")
-}
-
 azurefunctions {
-    subscription = "f31b1b25-6cef-41d9-af18-07e484302cf4"
-    resourceGroup = "poc-rg-authdemo-usw2"
-    appName = "azure-function-samples"
+    subscription = "68d58ca3-d623-4068-9c50-8c624025a65e"
+    resourceGroup = "function-test"
+    appName = "azure-function-kotlin-gradle-1"
+    pricingTier = "Consumption"
+    region = "westus"
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
     setRuntime(closureOf<com.microsoft.azure.gradle.configuration.GradleRuntimeConfig> {
         os("Windows")
     })
