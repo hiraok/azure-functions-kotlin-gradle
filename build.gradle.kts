@@ -23,16 +23,16 @@ tasks.test {
 
 kotlin {
     jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(11))
     }
 }
 
 azurefunctions {
-    subscription = "68d58ca3-d623-4068-9c50-8c624025a65e"
-    resourceGroup = "function-test"
-    appName = "azure-function-kotlin-gradle-1"
-    pricingTier = "Consumption"
-    region = "westus"
+    subscription = property("azure.subscription").toString()
+    resourceGroup = property("azure.rg").toString()
+    appName = property("azure.appname").toString()
+    pricingTier = property("azure.pricing").toString()
+    region = property("azure.region").toString()
     localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
     setRuntime(closureOf<com.microsoft.azure.gradle.configuration.GradleRuntimeConfig> {
         os("Windows")
